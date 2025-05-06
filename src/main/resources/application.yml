@@ -17,6 +17,8 @@ spring:
       hibernate.ddl-auto: create-drop
       generate-ddl: ture
       show-sql: true
+
+
 #  datasource:
 #    username: user
 #    password: password
