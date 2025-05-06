@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: limites
+      POSTGRES_USER: limite
+      POSTGRES_PASSWORD: limite_passwd
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - postgres
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+
+networks:
+  postgres:

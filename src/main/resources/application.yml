@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/limites
+    hikari:
+      username: limite
+      password: limite_passwd
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+
+#  datasource:
+#    username: user
+#    password: password
+#    url: jdbc:postgresql://localhost:5432/polardb_catalog
+#    hikari:
+#      connection-timeout: 2000 #ms
+#      maximum-pool-size: 10
