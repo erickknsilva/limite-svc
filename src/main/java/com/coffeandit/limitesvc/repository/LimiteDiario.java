@@ -1,20 +1,19 @@
 package com.coffeandit.limitesvc.repository;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table
+@Table(name = "limite_diario")
 @Data
 @EqualsAndHashCode(of = "id")
 public class LimiteDiario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long agencia;

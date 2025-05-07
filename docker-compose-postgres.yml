@@ -8,17 +8,12 @@ services:
     environment:
       POSTGRES_DB: limites
       POSTGRES_USER: limite
-      POSTGRES_PASSWORD: limite_passwd
+      POSTGRES_PASSWORD: limite
     ports:
       - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
     networks:
       - postgres
     restart: unless-stopped
-
-volumes:
-  pgdata:
 
 networks:
   postgres:
