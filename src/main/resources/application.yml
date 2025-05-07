@@ -18,7 +18,6 @@ spring:
       generate-ddl: ture
       show-sql: true
 
-
 #  datasource:
 #    username: user
 #    password: password
