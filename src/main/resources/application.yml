@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   application:
     name: limite-svc
@@ -6,7 +8,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/limites
     hikari:
       username: limite
-      password: limite_passwd
+      password: limite
   jpa:
     properties:
       hibernate:
@@ -17,6 +19,11 @@ spring:
       hibernate.ddl-auto: create-drop
       generate-ddl: ture
       show-sql: true
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+limite:
+  valor: 2000
 
 #  datasource:
 #    username: user
