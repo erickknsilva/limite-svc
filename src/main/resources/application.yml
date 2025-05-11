@@ -6,21 +6,19 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/limites
+    username: limite
+    password: limite
     hikari:
-      username: limite
-      password: limite
+      connection-timeout: 2000 #ms
+      maximum-pool-size: 10
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
   jpa:
-    properties:
-      hibernate:
-        dialect:
-        temp:
-          use_jdbc_metadata_defaults: false
     hibernate:
-      hibernate.ddl-auto: create-drop
-      generate-ddl: ture
+      ddl-auto: validate
+      dialect: org.hibernate.dialect.PostgreSQLDialect
       show-sql: true
-      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
 
 limite:
   valor: 2000

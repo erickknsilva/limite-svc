@@ -12,8 +12,8 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Optional;
 
 
+@RequestMapping("/limite-diario")
 @RestController
-@RequestMapping("limite-diario")
 public class LimiteDiarioController {
 
     private final LimiteDiarioService limiteDiarioService;

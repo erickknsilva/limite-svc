@@ -5,9 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "limite_diario")
+@Table
 @Data
 @EqualsAndHashCode(of = "id")
 public class LimiteDiario {
@@ -19,6 +20,8 @@ public class LimiteDiario {
     private Long agencia;
 
     private Long conta;
+
+    private LocalDate data;
 
     private BigDecimal valor;
 }
