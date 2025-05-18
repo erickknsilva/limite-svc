@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -49,14 +50,13 @@ public class LimiteDiarioService {
         limite.setValor(valor);
         limite.setConta(conta);
         limite.setAgencia(agencia);
-        limite.setData(LocalDate.now());
+        limite.setData(LocalDateTime.now());
         return limite;
     }
 
     public void validarLimiteDiario(TransactionDto transactionDto) {
         var limiteDiario = limiteDiarioRepository.findByAgenciaAndContaAndData(
-                transactionDto.getConta().getCodigoAgencia(), transactionDto.getConta().getCodigoConta(), LocalDate.now()
-        );
+                transactionDto.getConta().getCodigoAgencia(), transactionDto.getConta().getCodigoConta(), LocalDateTime.now());
 
         if (Objects.isNull(limiteDiario)) {
             limiteDiario = getLimiteDiario(transactionDto);
@@ -65,14 +65,10 @@ public class LimiteDiarioService {
         if (limiteDiario.getValor().compareTo(transactionDto.getValor()) < 0) {
             transactionDto.suspeitaFraude();
             log.info("Transação excede valor diário: {}", transactionDto);
-        }
-
-        else if (limiteDiario.getValor().compareTo(BigDecimal.valueOf(100000l)) > 0) {
+        } else if (limiteDiario.getValor().compareTo(BigDecimal.valueOf(100000l)) > 0) {
             transactionDto.analiseHumana();
             log.info("Transação está em analise humana: {}", transactionDto);
-        }
-
-        else {
+        } else {
             transactionDto.analisada();
             log.info("Transação está analisada");
             limiteDiario.setValor(limiteDiario.getValor().subtract(transactionDto.getValor()));
@@ -83,8 +79,8 @@ public class LimiteDiarioService {
     }
 
     private LimiteDiario getLimiteDiario(TransactionDto transactionDto) {
-        LimiteDiario limiteDiario;
-        limiteDiario = new LimiteDiario();
+
+        LimiteDiario limiteDiario = new LimiteDiario();
         limiteDiario.setAgencia(transactionDto.getConta().getCodigoAgencia());
         limiteDiario.setConta(transactionDto.getConta().getCodigoConta());
         limiteDiario.setValor(valor);

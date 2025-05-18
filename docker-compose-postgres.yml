@@ -13,8 +13,8 @@ services:
       - "5432:5432"
     networks:
       - postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
 
 networks:
