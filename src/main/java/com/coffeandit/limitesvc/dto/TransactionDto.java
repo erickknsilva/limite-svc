@@ -19,9 +19,9 @@ public class TransactionDto {
     private UUID uuid;
     private BigDecimal valor;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime data;
+    private LocalDate data;
 
     private Conta conta;
 

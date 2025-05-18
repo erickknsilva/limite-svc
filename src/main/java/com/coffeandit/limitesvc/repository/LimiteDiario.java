@@ -22,7 +22,7 @@ public class LimiteDiario {
 
     private Long conta;
 
-    private LocalDateTime data;
+    private LocalDate data;
 
     private BigDecimal valor;
 }
