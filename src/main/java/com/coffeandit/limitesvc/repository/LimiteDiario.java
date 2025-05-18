@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table
@@ -21,7 +22,7 @@ public class LimiteDiario {
 
     private Long conta;
 
-    private LocalDate data;
+    private LocalDateTime data;
 
     private BigDecimal valor;
 }

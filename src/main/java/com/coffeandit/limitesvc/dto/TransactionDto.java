@@ -21,7 +21,7 @@ public class TransactionDto {
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDate data;
+    private LocalDateTime data;
 
     private Conta conta;
 

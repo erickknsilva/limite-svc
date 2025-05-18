@@ -9,6 +9,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 @Slf4j
@@ -39,7 +40,7 @@ public class LimiteConsumer {
     private TransactionDto getTransaction(String message) throws JsonProcessingException {
 
         TransactionDto transactionDto = objectMapper.readValue(message, TransactionDto.class);
-        transactionDto.setData(LocalDate.now());
+        transactionDto.setData(LocalDateTime.now());
         return transactionDto;
     }
 
