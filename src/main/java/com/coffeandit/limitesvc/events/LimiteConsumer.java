@@ -40,7 +40,7 @@ public class LimiteConsumer {
     private TransactionDto getTransaction(String message) throws JsonProcessingException {
 
         TransactionDto transactionDto = objectMapper.readValue(message, TransactionDto.class);
-        transactionDto.setData(LocalDateTime.now());
+        transactionDto.setData(LocalDate.now());
         return transactionDto;
     }
 

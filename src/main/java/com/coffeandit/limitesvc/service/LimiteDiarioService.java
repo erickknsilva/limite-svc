@@ -50,13 +50,13 @@ public class LimiteDiarioService {
         limite.setValor(valor);
         limite.setConta(conta);
         limite.setAgencia(agencia);
-        limite.setData(LocalDateTime.now());
+        limite.setData(LocalDate.now());
         return limite;
     }
 
     public void validarLimiteDiario(TransactionDto transactionDto) {
         var limiteDiario = limiteDiarioRepository.findByAgenciaAndContaAndData(
-                transactionDto.getConta().getCodigoAgencia(), transactionDto.getConta().getCodigoConta(), LocalDateTime.now());
+                transactionDto.getConta().getCodigoAgencia(), transactionDto.getConta().getCodigoConta(), LocalDate.now());
 
         if (Objects.isNull(limiteDiario)) {
             limiteDiario = getLimiteDiario(transactionDto);
@@ -87,6 +87,7 @@ public class LimiteDiarioService {
         limiteDiario.setData(transactionDto.getData());
         limiteDiario = limiteDiarioRepository.save(limiteDiario);
         return limiteDiario;
+
     }
 
 
