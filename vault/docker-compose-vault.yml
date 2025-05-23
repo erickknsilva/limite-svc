@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  vault-server:
+    image: hashicorp/vault:1.15.3
+    container_name: vault
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: "vault-plaintext-root-token"
+      VAULT_ADDR: "http://0.0.0.0:8200"
+    command: server -dev
+    cap_add:
+      - IPC_LOCK
+    networks:
+      - vault-network
+
+networks:
+  vault-network:
+    driver: bridge

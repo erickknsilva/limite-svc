@@ -3,22 +3,21 @@ server:
 spring:
   application:
     name: limite-svc
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/limites
-    username: limite
-    password: limite
-    hikari:
-      connection-timeout: 2000 #ms
-      maximum-pool-size: 10
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
-  jpa:
-    hibernate:
-      ddl-auto: validate
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-      show-sql: true
+  config:
+    import: "vault://secret/limites" # Isso diz ao Spring para buscar configs no Vault
+  cloud:
+    vault:
+      host: localhost
+      port: 8200
+      scheme: http
+      uri: http://localhost:8200
+      connection-timeout: 5000
+      read-timeout: 15000
+      token: vault-plaintext-root-token
+      kv:
+        enabled: true
+        backend: secret
+        version: 2
   kafka:
     bootstrap-servers: localhost:29092
     consumer:
