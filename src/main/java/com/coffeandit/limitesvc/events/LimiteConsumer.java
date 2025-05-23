@@ -9,7 +9,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Service
 @Slf4j
@@ -23,7 +22,7 @@ public class LimiteConsumer {
         this.objectMapper = objectMapper;
     }
 
-    @KafkaListener(topics = "${app.topic}")
+    @KafkaListener(topics = "${app.topic}", groupId = "${spring.application.name}")
     public void onConsume(final String message) {
 
         try {

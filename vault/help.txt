@@ -1,0 +1,2 @@
+export VAULT_ADDR='http://0.0.0.0:8200'
+export VAULT_TOKEN=vault-plaintext-root-token
